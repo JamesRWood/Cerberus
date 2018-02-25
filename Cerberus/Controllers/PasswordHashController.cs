@@ -1,6 +1,7 @@
-﻿namespace Cerberus.Controllers
+﻿using Cerberus.Contracts.Controllers;
+
+namespace Cerberus.Controllers
 {
-    using Cerberus.Contracts.Controllers;
     using System;
     using System.Security.Cryptography;
 
@@ -9,49 +10,44 @@
         private const int SaltLength = 20;
         private const int HashLength = 30;
         private const int IntIterations = 10000;
+        private const string InputExceptionMessage = "Value cannot be null or empty.";
 
         public string HashString(string password)
         {
             if (string.IsNullOrEmpty(password))
             {
-                throw new ArgumentNullException("Password");
+                throw new ArgumentNullException(nameof(password), InputExceptionMessage);
             }
-            else
-            {
-                byte[] salt;
-                new RNGCryptoServiceProvider().GetBytes(salt = new byte[SaltLength]);
 
-                var pbkdf2 = new Rfc2898DeriveBytes(password, salt, IntIterations);
-                var hash = pbkdf2.GetBytes(HashLength);
+            byte[] salt;
+            new RNGCryptoServiceProvider().GetBytes(salt = new byte[SaltLength]);
 
-                var hashBytes = new byte[SaltLength + HashLength];
-                Array.Copy(salt, 0, hashBytes, 0, SaltLength);
-                Array.Copy(hash, 0, hashBytes, SaltLength, HashLength);
+            var hash = GetHash(password, salt);
 
-                var savedPasswordHash = Convert.ToBase64String(hashBytes);
+            var hashBytes = new byte[SaltLength + HashLength];
+            Array.Copy(salt, 0, hashBytes, 0, SaltLength);
+            Array.Copy(hash, 0, hashBytes, SaltLength, HashLength);
 
-                return savedPasswordHash;
-            }
+            return Convert.ToBase64String(hashBytes);
         }
 
         public bool ValidatePassword(string password, string hashedPassword)
         {
             if (string.IsNullOrEmpty(password))
             {
-                throw new ArgumentNullException("Password");
+                throw new ArgumentNullException(nameof(password), InputExceptionMessage);
             }
 
             if (string.IsNullOrEmpty(hashedPassword))
             {
-                throw new ArgumentNullException("HashedPassword");
+                throw new ArgumentNullException(nameof(hashedPassword), InputExceptionMessage);
             }
 
             var hashBytes = Convert.FromBase64String(hashedPassword);
             var salt = new byte[SaltLength];
             Array.Copy(hashBytes, 0, salt, 0, SaltLength);
 
-            var pbkdf2 = new Rfc2898DeriveBytes(password, salt, IntIterations);
-            var hash = pbkdf2.GetBytes(HashLength);
+            var hash = GetHash(password, salt);
 
             for (var i = 0; i < HashLength; i++)
             {
@@ -62,6 +58,12 @@
             }
 
             return true;
+        }
+
+        private byte[] GetHash(string password, byte[] salt)
+        {
+            var pbkdf2 = new Rfc2898DeriveBytes(password, salt, IntIterations);
+            return pbkdf2.GetBytes(HashLength);
         }
     }
 }

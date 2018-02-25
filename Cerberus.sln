@@ -3,14 +3,20 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27130.2003
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cerberus", "Cerberus\Cerberus.csproj", "{E484962E-6E27-4759-8F51-9A6041EF6EBA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cerberus", "Cerberus\Cerberus.csproj", "{E484962E-6E27-4759-8F51-9A6041EF6EBA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cerberus.Contracts", "..\Cerberus.Contracts\Cerberus.Contracts.csproj", "{8E2513D7-3F84-4EF7-BA00-CD056BF24FC9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cerberus.Contracts", "..\Cerberus.Contracts\Cerberus.Contracts.csproj", "{8E2513D7-3F84-4EF7-BA00-CD056BF24FC9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cerberus.Tests", "Cerberus.Tests\Cerberus.Tests.csproj", "{A998BD77-0B51-40A7-BEA8-BDF781AAB6EE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cerberus.Tests", "Cerberus.Tests\Cerberus.Tests.csproj", "{A998BD77-0B51-40A7-BEA8-BDF781AAB6EE}"
 	ProjectSection(ProjectDependencies) = postProject
 		{8E2513D7-3F84-4EF7-BA00-CD056BF24FC9} = {8E2513D7-3F84-4EF7-BA00-CD056BF24FC9}
 	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cerberus.DatabaseContext", "Cerberus.DatabaseContext\Cerberus.DatabaseContext.csproj", "{F908D63A-E28D-4C0D-B3AE-0715AC23E048}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cerberus.Entities", "Cerberus.Entities\Cerberus.Entities.csproj", "{A19206F1-4717-4C6C-A0B3-EF5A71C894D4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cerberus.Data", "Cerberus.Data\Cerberus.Data.csproj", "{2E295B2C-8F6C-42AB-A7F1-C8F022DF0BE5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -30,6 +36,18 @@ Global
 		{A998BD77-0B51-40A7-BEA8-BDF781AAB6EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A998BD77-0B51-40A7-BEA8-BDF781AAB6EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A998BD77-0B51-40A7-BEA8-BDF781AAB6EE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F908D63A-E28D-4C0D-B3AE-0715AC23E048}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F908D63A-E28D-4C0D-B3AE-0715AC23E048}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F908D63A-E28D-4C0D-B3AE-0715AC23E048}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F908D63A-E28D-4C0D-B3AE-0715AC23E048}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A19206F1-4717-4C6C-A0B3-EF5A71C894D4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A19206F1-4717-4C6C-A0B3-EF5A71C894D4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A19206F1-4717-4C6C-A0B3-EF5A71C894D4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A19206F1-4717-4C6C-A0B3-EF5A71C894D4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2E295B2C-8F6C-42AB-A7F1-C8F022DF0BE5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2E295B2C-8F6C-42AB-A7F1-C8F022DF0BE5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2E295B2C-8F6C-42AB-A7F1-C8F022DF0BE5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2E295B2C-8F6C-42AB-A7F1-C8F022DF0BE5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
